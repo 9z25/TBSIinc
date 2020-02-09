@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<title>TBSI</title>
+<head> <h5 class="logo"><img src="https://freshmintrecords.com/file-directory/images/logo-tbsi.jpg" width="10%" style="margin-bottom: -2.5%" />&nbsp;Tao Bank Services International Inc.</h5></head>
+<body>
+<br/>
+<p>Register an account to become a Tao holder. Interest earned with an account will be at a rate of 2%
+<br/><br/><br/>
+Enter your information below to be sent a bitcoin deposit address: <br/></p>
+
+<table>
+<form>
+<tr>
+<td><strong>Name&nbsp;&nbsp;</strong></td>
+<td><input type="text" id="name" /></td><br/>
+</tr>
+<tr>
+<td><strong>Email Address&nbsp;&nbsp;</strong></td>
+<td><input type="text" id="email-address" /></td><br/>
+</tr>
+<td>
+<strong>Phone Number&nbsp;&nbsp;</strong>
+</td>
+<td>
+<input type="text" id="phone-number" /><br/>
+</td>
+<td>
+<button id="show-contact-data">Sign up!</button>
+</td>
+</form>
+</table><br/><br/>
+
+<div>
+<table class="bank-contact">
+<td>You will be emailed a bitcoin deposit address.&nbsp;</td>
+</table>
+</div>
+<style>
+    body {
+        background-color: rgb(229, 226, 226) !important;
+    }
+    table {
+        border-style: groove;
+        
+    }
+    .logo {
+        background-color:blue;
+        color:white;
+        padding-bottom: 1.1em;
+    }
+    .bank-contact {
+        display: none;
+    }
+    footer {
+        float: right;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jdriviere/sparkle-css@3.0.0/dist/css/sparkle.min.css">
+
+<script>
+    $(document).ready(() => {
+        $("#show-contact-data").click((e) => {
+            e.preventDefault();
+            $(".bank-contact").show();
+
+            fetch("http://localhost:8666/?name=" +
+              $("#name").val() +
+              "&phone_number=" +
+              $("#phone-number").val() +
+              "&email_address=" +
+              $("#email-address").val()
+              )
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err))
+        });
+    })
+</script>
+
+</body>
+<footer>
+    <span>Powered By <img src="https://freshmintrecords.com/file-directory/images/mint-leaves-two-color-512.png" width="2%" /> fmPay</span>
+</footer>
+</html>
